@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 const db = require('./db/conn.ts')
 
+import indexRouter from './routes/index'
+
 dotenv.config();
 
 const app = express();
@@ -15,15 +17,7 @@ let corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-    try {
-        const result = await db.query('SELECT * FROM bidet');
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-    }
-})
+app.use('/', indexRouter)
 
 app.listen(port, () => {
     console.log('server started')
