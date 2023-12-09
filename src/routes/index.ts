@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/get-all-coordinates', async (req, res) => {
     try {
-        const result = await db.query('SELECT coordinate FROM bidet');
+        const result = await db.query('SELECT id, coordinates FROM bidet');
         res.json(result.rows);
     } catch (err) {
         console.error(err);
