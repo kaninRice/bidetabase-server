@@ -13,4 +13,16 @@ router.get('/get-all-coordinates', async (req, res) => {
     }
 });
 
+router.get('/get-marker-info/:id', async (req, res) => {
+    const markerId: number = (req.params.id as unknown) as number;
+
+    try {
+        const result = await db.query('SELECT * FROM bidet WHERE id = ' + req.params.id);
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+})
+
 export default router
