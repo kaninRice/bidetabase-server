@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 const port = process.env.SERVER_PORT;
 
-let corsOptions = {
+const corsOptions = {
     origin: process.env.CLIENT_ORIGIN
 }
 
@@ -19,5 +19,5 @@ app.use(express.json());
 app.use('/', indexRouter)
 
 app.listen(port, () => {
-    console.log('server started')
+    console.log('server running on PORT', port)
 })
