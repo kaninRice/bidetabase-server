@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import indexRouter from './routes/index'
+const path = require('path');
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.static('public'));
 
 app.use('/', indexRouter)
 
