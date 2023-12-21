@@ -1,11 +1,12 @@
 import express from 'express'
 
-const db = require('../db/conn.ts');
-const router = express.Router()
-
 import storage from '../middleware/uploadImage';
+
+const db = require('../db/conn.ts');
 const multer = require('multer');
-const upload = multer({ storage: storage })
+
+const router = express.Router();
+const upload = multer({ storage: storage });
 
 router.get('/get-all-marker-coordinates', async (req, res) => {
     try {
@@ -34,8 +35,8 @@ router.post('/add-marker', upload.single('file'), async (req, res) => {
     let filename: string | null;
 
     req.file == null
-    ? filename = null
-    : filename = req.file.filename;
+        ? filename = null
+        : filename = req.file.filename;
 
     marker.coordinates = `${marker.x}, ${marker.y}`;
 
