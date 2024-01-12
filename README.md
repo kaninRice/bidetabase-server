@@ -1,7 +1,7 @@
 
 # bidetabase-server
 
-Backend API server used together with [bidetabese](https://github.com/kaninRice/bidetabase) and built using NodeJS and ExpressJS.
+Backend API server used together with [bidetabase](https://github.com/kaninRice/bidetabase) and built using NodeJS and ExpressJS.
 
 
 ## Run Locally
